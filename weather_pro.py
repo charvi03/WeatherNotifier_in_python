@@ -34,7 +34,7 @@ def getNotification():
 
         # getting the "temp" key of y
         temp = y["temp"]
-        temp -= 273  # converting temperature from kelvin to celsius
+        temp -= 273# converting temperature from kelvin to celsius
 
         # storing the value of the "pressure" key of y
         pres = y["pressure"]
@@ -51,14 +51,16 @@ def getNotification():
         weather_desc = z[0]["description"]
 
         # combining the above values as a string
-        info = "Hi! charvi ,the weather description of " + cityName + ":" + " \nTemperature = " + str(
-            temp) + "°C" + " atmospheric pressure = " + str(pres) + "hPa" + " humidity = " + str(
-            hum) + " visibility = " + str(vis) + "%" + " description of the weather= " + str(weather_desc)
+        info = "Hi! Charvi ,Weather of " + cityName.capitalize() + ":" + "\nTemperature = " + str(
+            int(temp)) + "°C" + " pressure = " + str(int(pres / 1)) + " mb" + " humidity = " + str(
+            hum) + " visibility = " + str(vis) + "%" + "\nWeather Desc = " + str(weather_desc)
 
         # showing the notification
         notification.notify(
             title="YOUR WEATHER REPORT",
             message=info,
+
+            app_icon="download.ico",
 
             # displaying time
             timeout=2)
