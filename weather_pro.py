@@ -28,13 +28,13 @@ def getNotification():
     try:
         # This is the complete url to get weather conditions of a city
         url = baseUrl + "appid=" + 'd850f7f52bf19300a9eb4b0aa6b80f0d' + "&q=" + cityName
-        response = requests.get(url)  # requesting for the the content of the url
+        response = requests.get(url)  # requesting for the content of the url
         x = response.json()  # converting it into json
         y = x["main"]  # getting the "main" key from the json object
 
         # getting the "temp" key of y
         temp = y["temp"]
-        temp -= 273# converting temperature from kelvin to celsius
+        temp -= 273  # converting temperature from kelvin to celsius
 
         # storing the value of the "pressure" key of y
         pres = y["pressure"]
@@ -43,7 +43,6 @@ def getNotification():
         hum = y["humidity"]
 
         vis = x["visibility"]
-        print(vis)
         # storing the value of "weather" key in variable z
         z = x["weather"]
 
@@ -54,6 +53,7 @@ def getNotification():
         info = "Hi! Charvi ,Weather of " + cityName.capitalize() + ":" + "\nTemperature = " + str(
             int(temp)) + "°C" + " pressure = " + str(int(pres / 1)) + " mb" + " humidity = " + str(
             hum) + " visibility = " + str(vis) + "%" + "\nWeather Desc = " + str(weather_desc)
+        print(info)
 
         # showing the notification
         notification.notify(
@@ -68,7 +68,7 @@ def getNotification():
         time.sleep(7)
 
     except Exception as e:
-        mb.showerror('Error')
+        mb.showerror('Error', "enter the location")
 
 
 # Button to get notification
